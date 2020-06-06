@@ -40,6 +40,7 @@ exports.sendGeofenceEcitedNotification = functions.database.ref('/Assets/{assetI
     let tokens = Object.keys(tokensSnapshot.val());
     // Send notifications to all tokens.
     const response = await admin.messaging().sendToDevice(tokens, payload);
+    snap.ref.update({"processed": true});
     // For each message check if there was an error.
     const tokensToRemove = [];
     response.results.forEach((result, index) => {
