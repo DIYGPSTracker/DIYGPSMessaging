@@ -9,7 +9,7 @@ admin.initializeApp();
  *
  * The Tracker places a Notification document into /Assets/{assetId}/Notifications/{notificationId}
  */
-exports.sendGeofenceEcitedNotification = functions.database.ref('/Assets/{assetId}/Notifications/{notificationId}')
+exports.sendGeofenceExitedNotification = functions.database.ref('/Assets/{assetId}/Notifications/{notificationId}')
   .onCreate(async (snap, context) => {
     const topic = "geo_fence_exited";
     const newNotification = snap.data();
